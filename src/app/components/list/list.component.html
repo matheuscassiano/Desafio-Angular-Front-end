@@ -1,0 +1,11 @@
+<ul class="playlist">
+  <li *ngFor="let item of list; let i = index;" class="playlist-item" (click)="goToSong(item.track.url)"
+    style="width: {{ width }};">
+    <span>{{ i + 1 }}</span>
+    <img class="playlist-item-image" [src]="item.track.images.coverart" [alt]="item.track.subtitle">
+    <div>
+      <p class="playlist-item-title">{{ item.track.title }}</p>
+      <p class="playlist-item-subtitle">{{ item.track.subtitle }}</p>
+    </div>
+  </li>
+</ul>
