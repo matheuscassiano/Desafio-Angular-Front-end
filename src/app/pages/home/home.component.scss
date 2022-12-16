@@ -64,6 +64,25 @@ main {
     }
 }
 
+.refused {
+    width: 95vw;
+    min-height: calc(100vh - 6em);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    img,
+    p {
+        width: 80vw;
+        max-width: 30em;
+    }
+
+    p {
+        text-align: center;
+        font-weight: 500;
+    }
+}
 
 @media (max-width: 545px) {
     .playlist-header {

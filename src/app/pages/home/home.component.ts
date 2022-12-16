@@ -765,13 +765,13 @@ export class HomeComponent implements OnInit {
   skeletonStyles = {
     header: {
       title: {
-        'width': '136px',
+        'width': '10em',
         'height': '60px',
         'border-radius': '0.5em',
         'margin': '0'
       },
       subtitle: {
-        'width': '520px',
+        'width': '20em',
         'height': '24px',
         'border-radius': '0.5em',
         'margin': '0'
@@ -779,7 +779,7 @@ export class HomeComponent implements OnInit {
     },
     playlistHeader: {
       title: {
-        'width': '20em',
+        'width': '12em',
         'height': '1.5em',
         'border-radius': '0.5em',
         'margin-bottom': '1.5em'
@@ -804,19 +804,17 @@ export class HomeComponent implements OnInit {
         'margin': '0 1em'
       },
       title: {
-        'width': '20em',
+        'width': '12em',
         'height': '1.5em',
         'border-radius': '0.5em',
         'margin': '0'
       },
       subtitle: {
-        'width': '16em',
+        'width': '8em',
         'height': '1.2em',
         'border-radius': '0.5em',
         'margin': '0'
       }
     }
   }
-
-
 }
