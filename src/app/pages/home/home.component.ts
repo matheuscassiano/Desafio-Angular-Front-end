@@ -25,9 +25,7 @@ export class HomeComponent implements OnInit {
   refuseLocation: boolean = false;
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.getLocation();
-    }, 5000);
+    this.getLocation();
   }
 
   getWeatherSubscriber = {
