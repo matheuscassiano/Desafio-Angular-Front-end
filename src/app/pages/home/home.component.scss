@@ -10,7 +10,8 @@ main {
         justify-content: center;
         padding: 2.5em;
 
-        h2, p {
+        h2,
+        p {
             margin: 0;
             text-align: center;
         }
@@ -47,7 +48,24 @@ main {
     }
 }
 
-@media (max-width: 545px){
+.sckeleton-playlist-item {
+    width: 80vw;
+    max-width: 40em;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    margin: .5em 0;
+    border-radius: .3em;
+    border: 1px solid #eff1f6;
+
+    &-texts {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 545px) {
     .playlist-header {
         align-items: flex-end !important;
 
