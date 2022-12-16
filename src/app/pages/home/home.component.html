@@ -1,0 +1,19 @@
+<span *ngIf="isLoading">Carregando</span>
+<main *ngIf="!refuseLocation && !isLoading">
+    <header>
+        <h2>{{ this.weather.main.temp }}°C</h2>
+        <p>Esta fazendo {{ this.weather.main.temp }}°C em {{ this.weather.name }}, que tal ouvir um pouco de {{
+            this.category }}</p>
+    </header>
+    <div class="playlist-header">
+        <h3 class="playlist-header-title">Musicas recomendadas</h3>
+        <div>
+            <button class="playlist-header-button" routerLink="/playlists">Mais playlists</button>
+            <button class="playlist-header-button" (click)="saveList()">Salvar playlist</button>
+        </div>
+    </div>
+    <app-list [list]="songs"></app-list>
+</main>
+<div *ngIf="refuseLocation">
+    <span>Localizacao necessaria</span>
+</div>
