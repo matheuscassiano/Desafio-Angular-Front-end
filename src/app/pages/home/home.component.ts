@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ISong, ISongResponse } from 'src/app/interfaces/songs.interface';
+import { IWeather } from 'src/app/interfaces/weather.interface';
 import { OpenWeatherService } from 'src/app/services/open-weather.service';
 import { ShazamService } from 'src/app/services/shazam.service';
 import { getItem, setItem } from 'src/app/utils/localStorage.utils';
@@ -16,9 +18,9 @@ export class HomeComponent implements OnInit {
     private shazamService: ShazamService
   ) { }
 
-  weather: any;
+  weather?: IWeather;
 
-  songs: any = [];
+  songs?: ISong[];
   category?: string;
 
   isLoading: boolean = true;
@@ -29,7 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   getWeatherSubscriber = {
-    next: (value: any) => {
+    next: (value: IWeather) => {
       this.weather = value;
       this.selectSong(value.main.temp)
     },
@@ -59,7 +61,7 @@ export class HomeComponent implements OnInit {
   }
 
   getSongsSubscriber = {
-    next: (value: any) => {
+    next: (value: ISongResponse) => {
       this.songs = value.tracks.hits
       this.isLoading = false;
     },
@@ -90,8 +92,8 @@ export class HomeComponent implements OnInit {
   saveList(): void {
     const data = {
       id: this.uniqId(),
-      city: this.weather.name,
-      temperature: this.weather.main.temp,
+      city: this.weather?.name,
+      temperature: this.weather?.main.temp,
       category: this.category,
       songs: this.songs,
       createdAt: new Date()
@@ -115,7 +117,7 @@ export class HomeComponent implements OnInit {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
   }
 
-  exmaple = {
+  exmaple: ISongResponse = {
     "tracks": {
       "hits": [
         {

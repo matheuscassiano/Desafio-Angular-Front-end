@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ISong } from 'src/app/interfaces/songs.interface';
 
 @Component({
   selector: 'app-list',
@@ -6,7 +7,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent {
-  @Input("list") list?: any[];
+  @Input("list") list?: ISong[];
   @Input("width") width?: string = "80vw";
 
   goToSong(url: string): void {

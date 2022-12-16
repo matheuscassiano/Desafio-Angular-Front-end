@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { IPlaylist } from 'src/app/interfaces/playlist.interface';
 import { getItem, setItem } from 'src/app/utils/localStorage.utils';
 
 @Component({
@@ -10,8 +11,8 @@ export class PlaylistsComponent implements OnInit {
 
   innerWidth: number = 0;
 
-  playlists: any = [];
-  selectedPlaylist: any = null;
+  playlists: IPlaylist[] = [];
+  selectedPlaylist: IPlaylist | null = null;
 
   isLoading: boolean = true;
   noPlaylist: boolean = false;
@@ -34,12 +35,12 @@ export class PlaylistsComponent implements OnInit {
     this.innerWidth = innerWidth;
   }
 
-  selectPlaylist(playlist: any) {
+  selectPlaylist(playlist: IPlaylist) {
     this.selectedPlaylist = playlist;
   }
 
   removePlaylist(id: string) {
-    const playlistIndex = this.playlists.findIndex((item: any) => item.id === id);
+    const playlistIndex = this.playlists.findIndex((item: IPlaylist) => item.id === id);
     this.playlists.splice(playlistIndex, 1);
     setItem("playlists", JSON.stringify(this.playlists));
     this.selectPlaylist(this.playlists[0])

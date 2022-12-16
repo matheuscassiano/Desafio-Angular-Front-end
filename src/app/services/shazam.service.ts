@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ISongResponse } from '../interfaces/songs.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ShazamService {
 
   constructor(private http: HttpClient) { }
 
-  getSongs(term: string): Observable<any> {
+  getSongs(term: string): Observable<ISongResponse> {
     const baseUrl = "https://shazam.p.rapidapi.com/search";
 
     let headers = new HttpHeaders();
@@ -22,6 +23,6 @@ export class ShazamService {
     params = params.append("offset", 0);
     params = params.append("limit", 5);
 
-    return this.http.get<any>(baseUrl, { headers, params })
+    return this.http.get<ISongResponse>(baseUrl, { headers, params })
   }
 }
