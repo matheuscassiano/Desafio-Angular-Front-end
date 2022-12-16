@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { getItem, setItem } from 'src/app/utils/localStorage.utils';
 
 @Component({
@@ -8,6 +8,8 @@ import { getItem, setItem } from 'src/app/utils/localStorage.utils';
 })
 export class PlaylistsComponent implements OnInit {
 
+  innerWidth: number = 0;
+
   playlists: any = [];
   selectedPlaylist: any = null;
 
@@ -16,6 +18,8 @@ export class PlaylistsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.innerWidth = innerWidth;
+
     const playlistsString = getItem("playlists");
     if (playlistsString) {
       this.playlists = JSON.parse(playlistsString);
@@ -23,6 +27,11 @@ export class PlaylistsComponent implements OnInit {
     } else {
       this.noPlaylist = true;
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = innerWidth;
   }
 
   selectPlaylist(playlist: any) {

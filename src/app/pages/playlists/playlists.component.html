@@ -1,8 +1,8 @@
-<h2 *ngIf="!noPlaylist">
+<h2>
   <span class="back" routerLink="/">←</span>
   <span>Playlists salvas</span>
 </h2>
-<main *ngIf="!noPlaylist">
+<main class="playlists" *ngIf="!noPlaylist">
   <section class="playlists-section">
     <ul>
       <li *ngFor="let playlist of playlists" (click)="selectPlaylist(playlist)">
@@ -21,14 +21,18 @@
       </h3>
       <div>
         <button class="list-section-header-button" (click)="removePlaylist(selectedPlaylist.id)">
-          Remover playlist
+          Remover
         </button>
       </div>
     </div>
-    <app-list class="list" width="35vw" [list]="selectedPlaylist.songs"></app-list>
+    <app-list 
+      class="list" 
+      [width]="innerWidth >= 1175 ? '35vw' : '75vw'" 
+      [list]="selectedPlaylist.songs"></app-list>
   </section>
 </main>
 
-<div *ngIf="noPlaylist">
-  <span>Sem Playlists Criadas</span>
-</div>
+<main class="empty-container" *ngIf="noPlaylist">
+  <img src="../../../assets/Headphone-pana.svg" alt="">
+  <p>Voce nao salvou nenhuma playlist, volte para a pagina inical e adicione algumas musicas</p>
+</main>
