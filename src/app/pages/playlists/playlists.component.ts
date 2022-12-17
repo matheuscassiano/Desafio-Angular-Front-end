@@ -22,7 +22,7 @@ export class PlaylistsComponent implements OnInit {
     this.innerWidth = innerWidth;
 
     const playlistsString = getItem("playlists");
-    if (playlistsString) {
+    if (playlistsString && playlistsString != "[]") {
       this.playlists = JSON.parse(playlistsString);
       this.selectPlaylist(this.playlists[0])
     } else {
