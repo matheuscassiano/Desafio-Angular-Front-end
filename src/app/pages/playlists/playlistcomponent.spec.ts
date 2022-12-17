@@ -1,11 +1,14 @@
 import { TestBed } from "@angular/core/testing";
+import { Toast, ToastrModule } from "ngx-toastr";
 import { IPlaylist } from "src/app/interfaces/playlist.interface";
 import { PlaylistsComponent } from "./playlists.component";
 
 describe("PlaylistsPage", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports:[ToastrModule.forRoot()],
       declarations: [PlaylistsComponent],
+      providers: [Toast]
     }).compileComponents();
   });
 

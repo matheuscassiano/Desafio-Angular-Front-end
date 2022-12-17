@@ -1,13 +1,14 @@
 import { TestBed } from "@angular/core/testing";
 import { HomeComponent } from "./home.component";
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { Toast, ToastrModule } from "ngx-toastr";
 
 describe("HomePage", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [HttpClientModule, ToastrModule.forRoot()],
       declarations: [HomeComponent],
-      providers: [HttpClient]
+      providers: [HttpClient, Toast]
     }).compileComponents();
   });
 
