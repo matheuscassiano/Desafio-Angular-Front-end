@@ -1,0 +1,98 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5em;
+
+        h2,
+        p {
+            margin: 0;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+    }
+
+    .playlist-header {
+        width: 85vw;
+        max-width: 42em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1em 1em 0 1em;
+        margin-bottom: -1.5em;
+        z-index: 5;
+
+        &-title {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        &-button {
+            padding: .8em 1em;
+            margin-left: .5em;
+            border: none;
+            border-radius: .2em;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    }
+}
+
+.sckeleton-playlist-item {
+    width: 80vw;
+    max-width: 40em;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    margin: .5em 0;
+    border-radius: .3em;
+    border: 1px solid #eff1f6;
+
+    &-texts {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.refused {
+    width: 95vw;
+    min-height: calc(100vh - 6em);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    img,
+    p {
+        width: 80vw;
+        max-width: 30em;
+    }
+
+    p {
+        text-align: center;
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 545px) {
+    .playlist-header {
+        align-items: flex-end !important;
+
+        &-button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: .5em;
+        }
+    }
+}

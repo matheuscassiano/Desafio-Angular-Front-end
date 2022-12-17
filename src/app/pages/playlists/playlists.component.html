@@ -1,0 +1,38 @@
+<h2>
+  <span class="back" routerLink="/">←</span>
+  <span>Playlists salvas</span>
+</h2>
+<main class="playlists" *ngIf="!noPlaylist">
+  <section class="playlists-section">
+    <ul>
+      <li *ngFor="let playlist of playlists" (click)="selectPlaylist(playlist)">
+        <img [src]="playlist.songs[0].track.images.coverart" [alt]="playlist.songs[0].track.subtitle">
+        <p>{{ playlist.city }} - {{ playlist.temperature }}°C</p>
+        <p>Categoria: {{ playlist.category }}</p>
+      </li>
+    </ul>
+  </section>
+  <section class="list-section" *ngIf="!!selectedPlaylist">
+    <div class="list-section-header">
+      <h3 class="list-section-header-title">
+        <span>{{ selectedPlaylist.city }} </span>
+        <span>{{ selectedPlaylist.temperature }}°C </span>
+        <span>{{ selectedPlaylist.category }}</span>
+      </h3>
+      <div>
+        <button class="list-section-header-button" (click)="removePlaylist(selectedPlaylist.id)">
+          Remover
+        </button>
+      </div>
+    </div>
+    <app-list 
+      class="list" 
+      [width]="innerWidth >= 1175 ? '35vw' : '75vw'" 
+      [list]="selectedPlaylist.songs"></app-list>
+  </section>
+</main>
+
+<main class="empty-container" *ngIf="noPlaylist">
+  <img src="../../../assets/Headphone-pana.svg" alt="">
+  <p>Você não salvou nenhuma playlist, volte para a pagina inicial e adicione algumas músicas</p>
+</main>

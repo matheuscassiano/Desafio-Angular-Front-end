@@ -1,0 +1,76 @@
+<main *ngIf="!refuseLocation && !isLoading">
+    <header>
+        <h2>{{ this.weather?.main?.temp }}°C</h2>
+        <p>Está fazendo {{ this.weather?.main?.temp }}°C em {{ this.weather?.name }}, que tal ouvir um pouco de {{
+            this.category }}</p>
+    </header>
+    <div class="playlist-header">
+        <h3 class="playlist-header-title">Musicas recomendadas</h3>
+        <div class="playlist-header-button-container">
+            <button class="playlist-header-button" routerLink="/playlists">Mais playlists</button>
+            <button class="playlist-header-button" (click)="saveList()">Salvar playlist</button>
+        </div>
+    </div>
+    <app-list [list]="songs"></app-list>
+</main>
+
+<main *ngIf="isLoading">
+    <header>
+        <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.header.title"></ngx-skeleton-loader>
+        <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.header.subtitle"></ngx-skeleton-loader>
+    </header>
+    <div class="playlist-header">
+        <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlistHeader.title"></ngx-skeleton-loader>
+        <div class="playlist-header-button-container">
+            <ngx-skeleton-loader appearance="circle"
+                [theme]="skeletonStyles.playlistHeader.button"></ngx-skeleton-loader>
+            <ngx-skeleton-loader appearance="circle"
+                [theme]="skeletonStyles.playlistHeader.button"></ngx-skeleton-loader>
+        </div>
+    </div>
+    <div class="sckeleton-playlist-item">
+        <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.number"></ngx-skeleton-loader>
+        <ngx-skeleton-loader appearance="circle" [theme]="skeletonStyles.playlist.cover"></ngx-skeleton-loader>
+        <div class="sckeleton-playlist-item-texts">
+            <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.title"></ngx-skeleton-loader>
+            <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.subtitle"></ngx-skeleton-loader>
+        </div>
+    </div>
+    <div class="sckeleton-playlist-item">
+        <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.number"></ngx-skeleton-loader>
+        <ngx-skeleton-loader appearance="circle" [theme]="skeletonStyles.playlist.cover"></ngx-skeleton-loader>
+        <div class="sckeleton-playlist-item-texts">
+            <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.title"></ngx-skeleton-loader>
+            <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.subtitle"></ngx-skeleton-loader>
+        </div>
+    </div>
+    <div class="sckeleton-playlist-item">
+        <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.number"></ngx-skeleton-loader>
+        <ngx-skeleton-loader appearance="circle" [theme]="skeletonStyles.playlist.cover"></ngx-skeleton-loader>
+        <div class="sckeleton-playlist-item-texts">
+            <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.title"></ngx-skeleton-loader>
+            <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.subtitle"></ngx-skeleton-loader>
+        </div>
+    </div>
+    <div class="sckeleton-playlist-item">
+        <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.number"></ngx-skeleton-loader>
+        <ngx-skeleton-loader appearance="circle" [theme]="skeletonStyles.playlist.cover"></ngx-skeleton-loader>
+        <div class="sckeleton-playlist-item-texts">
+            <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.title"></ngx-skeleton-loader>
+            <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.subtitle"></ngx-skeleton-loader>
+        </div>
+    </div>
+    <div class="sckeleton-playlist-item">
+        <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.number"></ngx-skeleton-loader>
+        <ngx-skeleton-loader appearance="circle" [theme]="skeletonStyles.playlist.cover"></ngx-skeleton-loader>
+        <div class="sckeleton-playlist-item-texts">
+            <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.title"></ngx-skeleton-loader>
+            <ngx-skeleton-loader appearance="line" [theme]="skeletonStyles.playlist.subtitle"></ngx-skeleton-loader>
+        </div>
+    </div>
+</main>
+
+<main class="refused" *ngIf="refuseLocation">
+    <img src="../../../assets/Building permit-pana.svg" alt="">
+    <p>Precisamos da sua localização para recomendar novas musicas para você</p>
+</main>

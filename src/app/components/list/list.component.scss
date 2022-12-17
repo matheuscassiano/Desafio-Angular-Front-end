@@ -1,0 +1,40 @@
+.playlist {
+  padding: 1em;
+
+  &-item {
+      width: 80vw;
+      max-width: 40em;
+      display: flex;
+      align-items: center;
+      padding: 1em;
+      margin: 1em 0;
+      cursor: pointer;
+      border-radius: .3em;
+      background-color: white;
+      transition: background-color .2s ease-in-out;
+
+      box-shadow:
+          0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+      &-image {
+          width: 3em;
+          border-radius: .65em;
+          margin: 0 1em;
+      }
+
+      &-title {
+          margin: 0;
+          font-weight: 500;
+      }
+
+      &-subtitle {
+          margin: 0;
+          opacity: .5;
+      }
+
+      &:hover {
+          background-color: rgb(0 0 0 / 0.08);
+      }
+  }
+}
