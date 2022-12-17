@@ -1,7 +1,7 @@
 <main *ngIf="!refuseLocation && !isLoading">
     <header>
         <h2>{{ this.weather?.main?.temp }}°C</h2>
-        <p>Esta fazendo {{ this.weather?.main?.temp }}°C em {{ this.weather?.name }}, que tal ouvir um pouco de {{
+        <p>Está fazendo {{ this.weather?.main?.temp }}°C em {{ this.weather?.name }}, que tal ouvir um pouco de {{
             this.category }}</p>
     </header>
     <div class="playlist-header">
@@ -72,5 +72,5 @@
 
 <main class="refused" *ngIf="refuseLocation">
     <img src="../../../assets/Building permit-pana.svg" alt="">
-    <p>Precisamos da sua localizacao para recomendar novas musicas para voce</p>
+    <p>Precisamos da sua localização para recomendar novas musicas para você</p>
 </main>

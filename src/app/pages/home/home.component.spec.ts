@@ -70,7 +70,7 @@ describe("HomePage", () => {
 
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector("main header p")?.textContent)
-      .toContain("Esta fazendo 30°C em Maceio, que tal ouvir um pouco de Pop");
+      .toContain("Está fazendo 30°C em Maceio, que tal ouvir um pouco de Pop");
   });
 
   it('should render subtitle if has no location', () => {
@@ -83,6 +83,6 @@ describe("HomePage", () => {
 
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector(".refused p")?.textContent)
-      .toContain("Precisamos da sua localizacao para recomendar novas musicas para voce");
+      .toContain("Precisamos da sua localização para recomendar novas musicas para você");
   });
 });

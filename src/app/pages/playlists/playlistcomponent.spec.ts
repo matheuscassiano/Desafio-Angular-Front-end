@@ -115,6 +115,6 @@ describe("PlaylistsPage", () => {
 
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector(".empty-container p")?.textContent)
-      .toContain("Voce nao salvou nenhuma playlist, volte para a pagina inical e adicione algumas musicas");
+      .toContain("Você não salvou nenhuma playlist, volte para a pagina inicial e adicione algumas músicas");
   });
 });
