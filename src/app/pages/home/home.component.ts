@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ISong, ISongResponse } from 'src/app/interfaces/songs.interface';
 import { IWeather } from 'src/app/interfaces/weather.interface';
+import { NotificationService } from 'src/app/services/notifications.service';
 import { OpenWeatherService } from 'src/app/services/open-weather.service';
 import { ShazamService } from 'src/app/services/shazam.service';
 import { getItem, setItem } from 'src/app/utils/localStorage.utils';
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private openWeatherService: OpenWeatherService,
-    private shazamService: ShazamService
+    private shazamService: ShazamService,
+    private notifyService: NotificationService
   ) { }
 
   weather?: IWeather;
@@ -89,9 +91,10 @@ export class HomeComponent implements OnInit {
   getWeatherSubscriber = {
     next: (value: IWeather) => {
       this.weather = value;
-      this.selectSong(value.main.temp)
+      this.selectSong(value.main.temp);
+      this.notifyService.showSuccess("Temperatura encontrada sucesso!");
     },
-    error: (err: Error) => console.error('Observer got an error: ' + err),
+    error: (err: Error) => this.notifyService.showError("Erro ao buscar a temperatura!"),
   }
 
   getLocation() {
@@ -102,7 +105,7 @@ export class HomeComponent implements OnInit {
           setItem("location", JSON.stringify(res))
           this.openWeatherService
             .getWeather(res.lat, res.lon)
-            .subscribe(this.getWeatherSubscriber)
+            .subscribe(this.getWeatherSubscriber);
         })
         .catch(() => {
           this.isLoading = false;
@@ -112,7 +115,7 @@ export class HomeComponent implements OnInit {
       const location = JSON.parse(locationString)
       this.openWeatherService
         .getWeather(location.lat, location.lon)
-        .subscribe(this.getWeatherSubscriber)
+        .subscribe(this.getWeatherSubscriber);
     }
   }
 
@@ -120,8 +123,9 @@ export class HomeComponent implements OnInit {
     next: (value: ISongResponse) => {
       this.songs = value.tracks.hits
       this.isLoading = false;
+      this.notifyService.showSuccess("Musicas recomendadas com sucesso!");
     },
-    error: (err: Error) => console.error('Observer got an error: ' + err),
+    error: (err: Error) => this.notifyService.showError("Erro ao buscar recomendações de musicas!"),
   }
 
   selectSong(temp: number): void {
@@ -160,6 +164,8 @@ export class HomeComponent implements OnInit {
       playlist.push(data)
       setItem("playlists", JSON.stringify(playlist))
     }
+
+    this.notifyService.showSuccess("Playlist salva com sucesso!");
   }
 
   goToSong(url: string): void {

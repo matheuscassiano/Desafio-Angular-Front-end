@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { IPlaylist } from 'src/app/interfaces/playlist.interface';
+import { NotificationService } from 'src/app/services/notifications.service';
 import { getItem, setItem } from 'src/app/utils/localStorage.utils';
 
 @Component({
@@ -17,6 +18,7 @@ export class PlaylistsComponent implements OnInit {
   isLoading: boolean = true;
   noPlaylist: boolean = false;
 
+  constructor(private notifyService: NotificationService) { }
 
   ngOnInit(): void {
     this.innerWidth = innerWidth;
@@ -42,7 +44,14 @@ export class PlaylistsComponent implements OnInit {
   removePlaylist(id: string) {
     const playlistIndex = this.playlists.findIndex((item: IPlaylist) => item.id === id);
     this.playlists.splice(playlistIndex, 1);
-    setItem("playlists", JSON.stringify(this.playlists));
-    this.selectPlaylist(this.playlists[0])
+    const playlistsString = JSON.stringify(this.playlists);
+    setItem("playlists", playlistsString);
+    this.selectPlaylist(this.playlists[0]);
+
+    if (playlistsString === "[]") {
+      this.noPlaylist = true;
+    }
+    
+    this.notifyService.showSuccess("Playlist removida com sucesso!")
   }
 }

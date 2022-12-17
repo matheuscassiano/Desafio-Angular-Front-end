@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlaylistsModule } from './pages/playlists/playlists.module';
 import { ListModule } from './components/list/list.module';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +22,9 @@ import { ListModule } from './components/list/list.module';
     HomeModule,
     HttpClientModule,
     PlaylistsModule,
-    ListModule
+    ListModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
